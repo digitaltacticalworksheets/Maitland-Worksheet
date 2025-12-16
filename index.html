@@ -10,6 +10,36 @@
   <meta charset="UTF-8" />
   <title>Digital Tactical Worksheet</title>
   <style>
+    :root{
+  /* Toolbar + preset button colors */
+  --btn-engine:   #b71c1c; --btn-engine-fg: #fff;
+  --btn-truck:    #111111; --btn-truck-fg:  #fff;
+  --btn-rescue:   #1565c0; --btn-rescue-fg: #fff;
+  --btn-squad:    #fbc02d; --btn-squad-fg:  #000;
+  --btn-captain:  #2e7d32; --btn-captain-fg:#fff;
+  --btn-battalion:#ffffff; --btn-battalion-fg:#000;
+  --btn-other:    #ef6c00; --btn-other-fg:  #000;
+
+  /* Tile fill colors */
+  --tile-engine:   #b71c1c;
+  --tile-truck:    #111111;
+  --tile-rescue:   #1565c0;
+  --tile-squad:    #fbc02d;
+  --tile-captain:  #2e7d32;
+  --tile-battalion:#ffffff;
+  --tile-other:    #ef6c00;
+
+  /* Tile text colors */
+  --tile-engine-fg:   #fff;
+  --tile-truck-fg:    #fff;
+  --tile-rescue-fg:   #fff;
+  --tile-squad-fg:    #000;
+  --tile-captain-fg:  #fff;
+  --tile-battalion-fg:#000;
+  --tile-other-fg:    #000;
+}
+
+    
   * { box-sizing: border-box; user-select: none; }
 
   html,
@@ -51,13 +81,14 @@
     justify-content: center;
   }
 
-  /* Tile button colors */
-  #btnEngine { background: #b71c1c; color: #fff; font-weight: bold; }
-  #btnTower  { background: #1565c0; color: #fff; font-weight: bold; }
-  #btnRescue { background: #2e7d32; color: #fff; font-weight: bold;}
-  #btnChief  { background: #fbc02d; color: #000; font-weight: bold;}
-  #btnRIT    { background: #f2721D; color: #000; font-weight: bold; }
-  #btnOther  { background: #b6c388; color: #000; font-weight: bold;}
+#btnEngine    { background: var(--btn-engine);    color: var(--btn-engine-fg); font-weight: bold; }
+#btnTruck     { background: var(--btn-truck);     color: var(--btn-truck-fg);  font-weight: bold; }
+#btnRescue    { background: var(--btn-rescue);    color: var(--btn-rescue-fg); font-weight: bold; }
+#btnSquad     { background: var(--btn-squad);     color: var(--btn-squad-fg);  font-weight: bold; }
+#btnCaptain   { background: var(--btn-captain);   color: var(--btn-captain-fg);font-weight: bold; }
+#btnBattalion { background: var(--btn-battalion); color: var(--btn-battalion-fg);font-weight: bold; border:1px solid #777; }
+#btnOther     { background: var(--btn-other);     color: var(--btn-other-fg);  font-weight: bold; }
+
 
   /* Utility buttons */
   #btnDelete      { background: #ee0707; color: #fff; font-weight: bold;}
@@ -196,11 +227,14 @@
     font-weight: 700;
   }
 
-  .preset-engine { background: #b71c1c; color: #fff; }
-  .preset-tower  { background: #1565c0; color: #fff; }
-  .preset-rescue { background: #2e7d32; color: #fff; }
-  .preset-rit    { background: #ff6f00; color: #000; }
-  .preset-chief  { background: #fbc02d; color: #000; }
+.preset-engine    { background: var(--btn-engine);    color: var(--btn-engine-fg); }
+.preset-truck     { background: var(--btn-truck);     color: var(--btn-truck-fg); }
+.preset-rescue    { background: var(--btn-rescue);    color: var(--btn-rescue-fg); }
+.preset-squad     { background: var(--btn-squad);     color: var(--btn-squad-fg); }
+.preset-captain   { background: var(--btn-captain);   color: var(--btn-captain-fg); }
+.preset-battalion { background: var(--btn-battalion); color: var(--btn-battalion-fg); }
+.preset-other     { background: var(--btn-other);     color: var(--btn-other-fg); }
+
 
   .collapsible-header {
     cursor: pointer;
@@ -368,13 +402,14 @@
 }
 
 
-
-  .unit-tile.engine { background: #ff8a80; }
-  .unit-tile.tower  { background: #82b1ff; }
-  .unit-tile.rescue { background: #a5d6a7; }
-  .unit-tile.chief  { background: #fff59d; }
-  .unit-tile.rit    { background: #ff6f00; }
-  .unit-tile.other  { background: #b6c388; }
+/* Unit tile base already bold in your .unit-tile, keep it */
+.unit-tile.engine   { background: var(--tile-engine);   color: var(--tile-engine-fg); }
+.unit-tile.truck    { background: var(--tile-truck);    color: var(--tile-truck-fg); }
+.unit-tile.rescue   { background: var(--tile-rescue);   color: var(--tile-rescue-fg); }
+.unit-tile.squad    { background: var(--tile-squad);    color: var(--tile-squad-fg); }
+.unit-tile.captain  { background: var(--tile-captain);  color: var(--tile-captain-fg); }
+.unit-tile.battalion{ background: var(--tile-battalion);color: var(--tile-battalion-fg); }
+.unit-tile.other    { background: var(--tile-other);    color: var(--tile-other-fg); }
 
   .unit-tile.selected {
     outline: 2px solid #000;
@@ -798,14 +833,15 @@
 
 
     <div class="spacer"></div>
+<button id="btnEngine">Engine</button>
+<button id="btnTruck">Truck</button>
+<button id="btnRescue">Rescue</button>
+<button id="btnSquad">Squad</button>
+<button id="btnCaptain">Captain</button>
+<button id="btnBattalion">Battalion</button>
+<button id="btnOther">Other</button>
+<button id="btnText">Text</button>
 
-    <button id="btnEngine">Engine</button>
-    <button id="btnTower">Tower</button>
-    <button id="btnRescue">Rescue</button>
-    <button id="btnChief">Chief</button>
-    <button id="btnRIT">RIT</button>
-    <button id="btnOther">Other</button>
-    <button id="btnText">Text</button>
 
     <div class="spacer"></div>
 
@@ -861,45 +897,41 @@
           <button id="btnExpandAll" style="flex:1; font-size:11px;">Expand All</button>
         </div>
 
-        <div class="preset-group collapsible-group">
-          <div class="preset-title collapsible-header">Engines</div>
-          <div class="preset-buttons collapsible-content" id="enginePresets"></div>
-        </div>
+       <div class="preset-group collapsible-group">
+  <div class="preset-title collapsible-header">Engines</div>
+  <div class="preset-buttons collapsible-content" id="enginePresets"></div>
+</div>
 
-        <div class="preset-group collapsible-group">
-          <div class="preset-title collapsible-header">Towers</div>
-          <div class="preset-buttons collapsible-content" id="towerPresets"></div>
-        </div>
+<div class="preset-group collapsible-group">
+  <div class="preset-title collapsible-header">Trucks</div>
+  <div class="preset-buttons collapsible-content" id="truckPresets"></div>
+</div>
 
-        <div class="preset-group collapsible-group">
-          <div class="preset-title collapsible-header">Tower Outside Teams</div>
-          <div class="preset-buttons collapsible-content" id="towerOutsidePresets"></div>
-        </div>
+<div class="preset-group collapsible-group">
+  <div class="preset-title collapsible-header">Rescues</div>
+  <div class="preset-buttons collapsible-content" id="rescuePresets"></div>
+</div>
 
-        <div class="preset-group collapsible-group">
-          <div class="preset-title collapsible-header">Rescues</div>
-          <div class="preset-buttons collapsible-content" id="rescuePresets"></div>
-        </div>
+<div class="preset-group collapsible-group">
+  <div class="preset-title collapsible-header">Squads</div>
+  <div class="preset-buttons collapsible-content" id="squadPresets"></div>
+</div>
 
-        <div class="preset-group collapsible-group">
-          <div class="preset-title collapsible-header">RIT</div>
-          <div class="preset-buttons collapsible-content" id="ritPresets"></div>
-        </div>
+<div class="preset-group collapsible-group">
+  <div class="preset-title collapsible-header">Captains</div>
+  <div class="preset-buttons collapsible-content" id="captainPresets"></div>
+</div>
 
-        <div class="preset-group collapsible-group">
-          <div class="preset-title collapsible-header">Command</div>
-          <div class="preset-buttons collapsible-content" id="chiefPresets"></div>
-        </div>
+<div class="preset-group collapsible-group">
+  <div class="preset-title collapsible-header">Battalions</div>
+  <div class="preset-buttons collapsible-content" id="battalionPresets"></div>
+</div>
 
-        <div class="preset-group collapsible-group">
-          <div class="preset-title collapsible-header">Medic Units</div>
-          <div class="preset-buttons collapsible-content" id="medicUnitPresets"></div>
-        </div>
+<div class="preset-group collapsible-group">
+  <div class="preset-title collapsible-header">Other</div>
+  <div class="preset-buttons collapsible-content" id="otherPresets"></div>
+</div>
 
-        <div class="preset-group collapsible-group">
-          <div class="preset-title collapsible-header">Other</div>
-          <div class="preset-buttons collapsible-content" id="otherPresets"></div>
-        </div>
       </div>
 
       <!-- Benchmarks sidebar (initially hidden) -->
@@ -2546,15 +2578,7 @@ function openNotePrompt(tile) {
 
   setMode("move");
 }
-/* === Spawn-column config for each unit type === */
-const TILE_SPAWN_COLUMNS = {
-  engine: { left: 20,  top: 20,  slotHeight: 32, width: 140, maxSlots: 25 },
-  tower:  { left: 200, top: 20,  slotHeight: 32, width: 140, maxSlots: 25 },
-  rescue: { left: 380, top: 20,  slotHeight: 32, width: 140, maxSlots: 25 },
-  rit:    { left: 560, top: 20,  slotHeight: 32, width: 140, maxSlots: 25 },
-  chief:  { left: 740, top: 20,  slotHeight: 32, width: 140, maxSlots: 25 },
-  other:  { left: 920, top: 20,  slotHeight: 32, width: 140, maxSlots: 25 }
-};
+
 
 /**
  * Get all tiles of this type that are still sitting in their spawn column.
@@ -2706,13 +2730,15 @@ function createTile(type, cssClass) {
   saveState();
 }
 
-document.getElementById("btnEngine").onclick = () => createTile("Engine","engine");
-document.getElementById("btnTower").onclick  = () => createTile("Tower","tower");
-document.getElementById("btnRescue").onclick = () => createTile("Rescue","rescue");
-document.getElementById("btnChief").onclick  = () => createTile("Chief","chief");
-document.getElementById("btnRIT").onclick    = () => createTile("RIT","rit");
-document.getElementById("btnOther").onclick  = () => createTile("Other","other");
-document.getElementById("btnText").onclick   = () => createTile("Text","texttile");
+document.getElementById("btnEngine").onclick    = () => createTile("Engine", "engine");
+document.getElementById("btnTruck").onclick     = () => createTile("Truck", "truck");
+document.getElementById("btnRescue").onclick    = () => createTile("Rescue", "rescue");
+document.getElementById("btnSquad").onclick     = () => createTile("Squad", "squad");
+document.getElementById("btnCaptain").onclick   = () => createTile("Captain","captain");
+document.getElementById("btnBattalion").onclick = () => createTile("Battalion","battalion");
+document.getElementById("btnOther").onclick     = () => createTile("Other", "other");
+document.getElementById("btnText").onclick      = () => createTile("Text", "texttile");
+
 
 /* Help Button */
 document.getElementById("btnHelp").onclick = () => {
@@ -2760,45 +2786,61 @@ function buildPresetButtons(targetId, labels, type, cssClass, btnClass) {
   });
 }
 
-buildPresetButtons("enginePresets", [
-  "E-1","E-2","E-3","E-4","E-5",
-  "E-6","E-7","E-8","E-9","E-10",
-  "E-11","E-12","E-13","E-14","E-15",
-  "E-16","E-17","E-18","E-19","E-101"
-], "Engine","engine","preset-engine");
+const DEPT_CONFIG = {
+  presets: {
+    enginePresets: ["E40","E41","E42","E28","SCE11","SCE12","SCE13","SCE14","SCE22","WPE61","WPE62","WPE64"],
+    truckPresets: ["TR30","Q40","SCTW12","SCTW25","WPTR61"],
+    rescuePresets: ["R40","R41","R141","R42","SCR11","SCR12","SCR13","SCR22","SCR25","WPR61","WPR62"],
+    squadPresets: ["SQ1","SQ3","SQ4","SCSQ2"],
+    captainPresets: ["CPT1","CPT2","WPEMS61"],
+    battalionPresets: ["B1","B2","SCB1","SCB2","WPB61"],
+    otherPresets: ["Rehab 1"]
+  },
 
-buildPresetButtons("towerPresets", [
-  "T-1","T-2","T-6","T-8",
-  "T-9","T-10","T-11","T-15"
-], "Tower","tower","preset-tower");
+  // Spawn columns (so your “stack” behavior stays clean)
+  spawnColumns: {
+    engine:    { left:  20, top: 20, slotHeight: 32, width: 140, maxSlots: 25 },
+    truck:     { left: 200, top: 20, slotHeight: 32, width: 140, maxSlots: 25 },
+    rescue:    { left: 380, top: 20, slotHeight: 32, width: 140, maxSlots: 25 },
+    squad:     { left: 560, top: 20, slotHeight: 32, width: 140, maxSlots: 25 },
+    captain:   { left: 740, top: 20, slotHeight: 32, width: 140, maxSlots: 25 },
+    battalion: { left: 920, top: 20, slotHeight: 32, width: 140, maxSlots: 25 },
+    other:     { left:1100, top: 20, slotHeight: 32, width: 140, maxSlots: 25 }
+  }
+};
 
-buildPresetButtons("rescuePresets", [
-  "R-1","R-2","R-3","R-6","R-7",
-  "R-8","R-9","R-10","R-11",
-  "R-12","R-15"
-], "Rescue","rescue","preset-rescue");
+// point your existing spawn logic at this config
+const TILE_SPAWN_COLUMNS = DEPT_CONFIG.spawnColumns;
 
-buildPresetButtons("ritPresets", [
-  "HR-1","HAZ-1", "HR-1 Outside","HAZ-1 Outside"
-], "RIT","rit","preset-rit");
+// Build all preset groups from config
+function buildAllPresets(cfg) {
+  const groups = [
+    { id:"enginePresets",    type:"Engine",    cssClass:"engine",    btnClass:"preset-engine" },
+    { id:"truckPresets",     type:"Truck",     cssClass:"truck",     btnClass:"preset-truck" },
+    { id:"rescuePresets",    type:"Rescue",    cssClass:"rescue",    btnClass:"preset-rescue" },
+    { id:"squadPresets",     type:"Squad",     cssClass:"squad",     btnClass:"preset-squad" },
+    { id:"captainPresets",   type:"Captain",   cssClass:"captain",   btnClass:"preset-captain" },
+    { id:"battalionPresets", type:"Battalion", cssClass:"battalion", btnClass:"preset-battalion" },
+    { id:"otherPresets",     type:"Other",     cssClass:"other",     btnClass:"preset-other" }
+  ];
 
-buildPresetButtons("chiefPresets", [
-  "D-1","D-2","D-3","D-4",
-  "D-5","D-6","EMS-1","AC-1"
-], "Chief","chief","preset-chief");
+  groups.forEach(g => {
+    const container = document.getElementById(g.id);
+    if (!container) return;
 
-buildPresetButtons("towerOutsidePresets", [
-  "T-1 Outside","T-2 Outside","T-6 Outside","T-8 Outside",
-  "T-9 Outside","T-10 Outside","T-11 Outside","T-15 Outside"
-], "Tower","tower","preset-tower");
+    container.innerHTML = "";
+    (cfg.presets[g.id] || []).forEach(lbl => {
+      const b = document.createElement("button");
+      b.className = "preset-button " + g.btnClass;
+      b.textContent = lbl;
+      b.onclick = () => spawnPreset(g.type, g.cssClass, lbl);
+      container.appendChild(b);
+    });
+  });
+}
 
-buildPresetButtons("medicUnitPresets", [
-  "M102","M141", "M161", "M171","M201","M601", "M801"
-], "Rescue","rescue","preset-rescue");
+buildAllPresets(DEPT_CONFIG);
 
-buildPresetButtons("otherPresets", [
-  "AIR1","BOMB", "FOAM", "WOODS-14","WOODS-16","DIVE-1", "DIVE-2"
-], "Other","other","preset-other");
 
 /* Tile drag: mouse */
 function startTileDragMouse(e) {
@@ -3185,50 +3227,34 @@ document.getElementById("btnDelete").onclick = () => {
 
 /* Auto Stack */
 document.getElementById("btnAutoStack").onclick = () => {
-  const colX = {
-    engine: 20,
-    tower:  200,
-    rescue: 380,
-    rit:    560,
-    chief:  740,
-    other:  920
-  };
   const verticalSpacing = 28;
   const topMargin = 20;
 
-  const stacks = {
-    engine: [],
-    tower: [],
-    rescue: [],
-    rit: [],
-    chief: [],
-    other: []
-  };
+  const stacks = {};
+  Object.keys(TILE_SPAWN_COLUMNS).forEach(k => (stacks[k] = []));
 
   const tiles = [...mapWrapper.querySelectorAll(".unit-tile")];
   tiles.forEach(t => {
     const type = (t.dataset.type || "").toLowerCase();
     if (type === "text") return;
 
-    if      (type === "engine") stacks.engine.push(t);
-    else if (type === "tower")  stacks.tower.push(t);
-    else if (type === "rescue") stacks.rescue.push(t);
-    else if (type === "rit")    stacks.rit.push(t);
-    else if (type === "chief")  stacks.chief.push(t);
-    else                        stacks.other.push(t);
+    const key = stacks[type] ? type : (stacks.other ? "other" : null);
+    if (key) stacks[key].push(t);
   });
 
   Object.entries(stacks).forEach(([key, list]) => {
-    let x = colX[key];
-    if (x === undefined) return;
+    const cfg = TILE_SPAWN_COLUMNS[key];
+    if (!cfg) return;
+
     list.forEach((tile, idx) => {
-      tile.style.left = x + "px";
+      tile.style.left = cfg.left + "px";
       tile.style.top  = (topMargin + idx * verticalSpacing) + "px";
     });
   });
 
   saveState();
 };
+
 
 /* ===== Floating Notes drag (fixed, clamped, unified) ===== */
 
@@ -3365,4 +3391,3 @@ saveState();
 
 </body>
 </html>
-
